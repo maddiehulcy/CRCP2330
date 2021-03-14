@@ -15,5 +15,12 @@ CHIP RAM8 {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    Register(in = in, load = load, out = out1);
+    Register(in = in, load = load, out = out2);
+    Register(in = in, load = load, out = out3);
+    Register(in = in, load = load, out = out4);
+    Register(in = in, load = load, out = out5);
+    Register(in = in, load = load, out = out6);
+    Register(in = in, load = load, out = out7);
+    Register(in = in, load = load, out = out8);
 }
