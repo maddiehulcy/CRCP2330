@@ -9,23 +9,24 @@
 // This program only needs to handle arguments that satisfy
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
-// Put your code here.
 
-@R0
-M=2
-@R1
-M=9
+
 
 (LOOP)
 	@R0
-	D=M+M //D=R0+R0
-	@R0
+	D=M
+	@R1
+	D=D+A
+	@R2
 	M=D
 	@R1
 	D=M-1 //decrement R1
-	@COMPLETE
-	D;JEQ //if R1=0, go to COMPLETE
+	@R1
+	M=D
+	@END
+	D;JEQ //if R1=0, go to END
 
-(COMPLETE)
-	@COMPLETE
+(END)
+	@END
+	0;JMP
 
