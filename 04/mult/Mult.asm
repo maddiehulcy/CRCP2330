@@ -10,21 +10,23 @@
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
 
-
+@R2
+M=0
 
 (LOOP)
 	@R0
 	D=M
-	@R1
+	@R2
 	D=D+A
 	@R2
 	M=D
+	@END
+	D;JEQ //if R1=0, go to END
 	@R1
 	D=M-1 //decrement R1
 	@R1
 	M=D
-	@END
-	D;JEQ //if R1=0, go to END
+	
 
 (END)
 	@END
