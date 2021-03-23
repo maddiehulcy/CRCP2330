@@ -12,15 +12,20 @@
 // Put your code here.
 
 @R0
-M=RAM[0]
+M=2
 @R1
-M=RAM[1]
-@R2
-M=RAM[2]
+M=9
 
 (LOOP)
 	@R0
-	D=M
+	D=M+M //D=R0+R0
+	@R0
+	M=D
 	@R1
-	D=D+A
-	D;JLT
+	D=M-1 //decrement R1
+	@COMPLETE
+	D;JEQ //if R1=0, go to COMPLETE
+
+(COMPLETE)
+	@COMPLETE
+
