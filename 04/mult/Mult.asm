@@ -14,16 +14,20 @@
 M=0
 
 (LOOP)
+	@R1
+	D=M
+	@END
+	D;JEQ //if R1=0, go to END
 	@R0
 	D=M
 	@R2
 	D=D+A //D=R0+R2
 	@R2
 	M=D //R2=D
-	@END
-	D;JEQ //if R1=0, go to END
 	@R1
 	M=M-1 //decrement R1
+	@LOOP
+	0;JMP
 
 	
 
