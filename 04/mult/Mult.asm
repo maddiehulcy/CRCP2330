@@ -21,9 +21,7 @@ M=0
 	@R0
 	D=M
 	@R2
-	D=D+A //D=R0+R2
-	@R2
-	M=D //R2=D
+	M=D+M
 	@R1
 	M=M-1 //decrement R1
 	@LOOP
