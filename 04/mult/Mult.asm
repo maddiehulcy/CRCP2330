@@ -10,3 +10,17 @@
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
 // Put your code here.
+
+@R0
+M=RAM[0]
+@R1
+M=RAM[1]
+@R2
+M=RAM[2]
+
+(LOOP)
+	@R0
+	D=M
+	@R1
+	D=D+A
+	D;JLT
