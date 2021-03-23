@@ -17,15 +17,14 @@ M=0
 	@R0
 	D=M
 	@R2
-	D=D+A
+	D=D+A //D=R0+R2
 	@R2
-	M=D
+	M=D //R2=D
 	@END
 	D;JEQ //if R1=0, go to END
 	@R1
-	D=M-1 //decrement R1
-	@R1
-	M=D
+	M=M-1 //decrement R1
+
 	
 
 (END)
