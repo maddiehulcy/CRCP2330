@@ -14,9 +14,31 @@
 // Put your code here.
 
 (LOOP)
-	@SCREEN
+	@IN
+	D = M
+	@WHITE
+	D;JEQ //if input, white
+	@BLACK
+	0;JMP //if no imput, black
+
+(BLACK)
+	@curr
 	M = 1
-	A = A + 16
-	@SCREEN
-	M = 1
+	D = M + 1
+	@IN
+	D = A - D
+	D;JEQ
+	@LOOP
+	0;JMP
+
+(WHITE)
+	@curr
+	M = 0
+	D = M + 1
+	@IN
+	D = A - D
+	D;JEQ
+	@LOOP
+	0;JMP
+
 
