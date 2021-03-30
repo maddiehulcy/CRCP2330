@@ -13,6 +13,10 @@
 
 // Put your code here.
 
+(BEGIN)
+	@SCREEN
+	D = A
+
 (LOOP)
 	@IN
 	D = M
