@@ -21,11 +21,11 @@
 
 (NEXT)
 	@curr
-	D = M - 1
-	M = D 
+	M = M - 1
+	D = M 
 	@BEGIN
 	D;JLT
-	@IN
+	@KBD
 	D = M
 	@WHITE
 	D;JEQ
