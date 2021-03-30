@@ -14,14 +14,14 @@
 // Put your code here.
 
 (BEGIN)
-	@0
+	@8192
 	D = A
 	@curr
 	M = D
 
 (NEXT)
 	@curr
-	D = M + 1
+	D = M - 1
 	M = D 
 	@BEGIN
 	D;JLT
