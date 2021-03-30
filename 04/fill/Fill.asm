@@ -16,6 +16,8 @@
 (BEGIN)
 	@SCREEN
 	D = A
+	@curr
+	M = D
 
 (LOOP)
 	@IN
@@ -32,6 +34,7 @@
 	M = D //go to next pixel
 	@IN
 	D = A - D
+	@BEGIN
 	D;JEQ
 	@LOOP
 	0;JMP
@@ -43,7 +46,7 @@
 	M = D //go to next pixel
 	@IN
 	D = A - D
-	@START
+	@BEGIN
 	D;JEQ
 	@LOOP
 	0;JMP
