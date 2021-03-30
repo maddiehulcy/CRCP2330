@@ -23,6 +23,8 @@
 	@curr
 	D = M + 1
 	M = D 
+	@BEGIN
+	D;JLT
 	@IN
 	D = M
 	@WHITE
@@ -33,11 +35,17 @@
 (BLACK)
 	@SCREEN
 	D = A
+	@curr
+	A=D+M 
+	M = -1
 	@NEXT
 	0;JMP
 
 (WHITE)
+	@SCREEN
+	D = A
 	@curr
+	A=D+M 
 	M = 0
 	@NEXT
 	0;JMP
