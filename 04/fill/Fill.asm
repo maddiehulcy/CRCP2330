@@ -21,14 +21,15 @@
 	@IN
 	D = M
 	@WHITE
-	D;JEQ //if input, white
+	D;JEQ //if no input, white
 	@BLACK
-	0;JMP //if no imput, black
+	0;JMP //if input, black
 
 (BLACK)
 	@curr
-	M = 1
+	M = -1
 	D = M + 1
+	M = D //go to next pixel
 	@IN
 	D = A - D
 	D;JEQ
@@ -39,8 +40,10 @@
 	@curr
 	M = 0
 	D = M + 1
+	M = D //go to next pixel
 	@IN
 	D = A - D
+	@START
 	D;JEQ
 	@LOOP
 	0;JMP
