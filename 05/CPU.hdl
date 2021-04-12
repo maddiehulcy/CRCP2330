@@ -44,4 +44,21 @@ CHIP CPU {
 
     Or(a = notI, b = instruction[5], out = inA);
     ARegister( in = i, load = inA, out = A, out[0..14] = addressM);
+
+    And(a = instruction[12], b = instruction[15], out = type);
+    Mux16(a = A, b = inM, sel = type, out = AM);
+
+    ALU(x = D, zx = instruction[11], nx = instruction[10], zy = instruction[9], ny = instruction[8], f = instruction[7], no = instruction[6], out = outM, out = outM, zr = zr, ng = ng);
+
+    And(a = instruction[15], b = instruction[4] out = inD);
+    DRegister(in = outM, load = inD, out = D);
+
+    And(a = instruction[15], b = instruction[3], out = mWrite);
+
+    //reset
+    Not(in = ng, out = nng);
+    Not(in = zr, out = nzr);
+    And(a = instruction[15], b = instruction[0], out = temp);
+    And(a = nng, b = nzr, out = temp2);
+    And(a = temp, b = temp2, out = load1);
 }
