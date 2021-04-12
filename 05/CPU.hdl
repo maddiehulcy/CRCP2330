@@ -61,4 +61,15 @@ CHIP CPU {
     And(a = instruction[15], b = instruction[0], out = temp);
     And(a = nng, b = nzr, out = temp2);
     And(a = temp, b = temp2, out = load1);
+
+    And(a = instruction[15], b = instruction[1], out = jeq);
+    And(a = jeq, b = zr, out = load2);
+
+    And(a = instruction[15], b = instruction[2], out = jlt);
+    And(a = jlt, b = ng, out = load3);
+
+    Or(a = load1, b = load2, out = loadTemp);
+    Or(a = loadTemp, b = load3, out = loadFinal);
+
+    PC(in = A, load = loadFinal, inc = true, reset = reset, out = pc);
 }
