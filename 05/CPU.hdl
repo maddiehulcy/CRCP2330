@@ -71,5 +71,5 @@ CHIP CPU {
     Or(a = load1, b = load2, out = loadTemp);
     Or(a = loadTemp, b = load3, out = loadFinal);
 
-    PC(in = A, load = loadFinal, inc = true, reset = reset, out = pc);
+    PC(in = A, load = loadFinal, inc = true, reset = reset, out[0..14] = pc);
 }
