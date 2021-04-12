@@ -53,7 +53,7 @@ CHIP CPU {
     And(a = instruction[15], b = instruction[4], out = inD);
     DRegister(in = outMTemp, load = inD, out = D);
 
-    And(a = instruction[15], b = instruction[3], out = mWrite);
+    And(a = instruction[15], b = instruction[3], out = writeM);
 
     Not(in = ng, out = nng);
     Not(in = zr, out = nzr);
