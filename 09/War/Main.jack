@@ -1,0 +1,7 @@
+class Main {
+	var Random random;
+	var Player player;
+	var Player cpu;
+
+	var char command;
+}
