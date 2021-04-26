@@ -1,7 +1,62 @@
 class Main {
+function void main() {
 	var Random random;
-	var Player player;
+	var Player p;
 	var Player cpu;
-
 	var char command;
+	var boolean end;
+	var Array deck2;
+	let random = Random.new(100);
+
+	
+	let p = Player.new();
+
+	
+	let cpu = Player.new();
+
+
+	
+	let end = false;
+
+	
+	let deck2 = makeDeck();
+	do Output.print(deck2[5]);
+
+	do Output.printString("Welcome to the Game of War");
+	do Output.println();
+
+	while(!end) {
+		do Output.printString("Press 'd' to draw from the deck");
+
+	}
+	return;
+	}
+
+
+	method Array makeDeck() {
+	var Array deck;
+	
+	var int i;
+	var int j;
+	var int k;
+	var int place;
+	let deck = Array.new(52);
+	let i = 0;
+	let j = 1;
+	let k = 0;
+	let place = 0;
+	while (k < 4){
+		while (i < 13) {
+		let deck[place] = j;
+		let i = i + 1;
+		let j = j + 1;
+		let place = place + 1;
+		}
+		let i = 0;
+		let j = 1;
+	}
+	
+	return deck;
+
+	}
 }

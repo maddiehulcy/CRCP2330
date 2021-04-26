@@ -12,5 +12,6 @@ class Player {
 	method int draw() {
 		var int card;
 		let card = random.randRange(13) + 1;
+		return card;
 	}
 }
