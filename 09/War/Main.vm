@@ -58,6 +58,11 @@ call Output.printString 1
 pop temp 0
 call Output.println 0
 pop temp 0
+label WHILE_EXP0
+push local 4
+not
+not
+if-goto WHILE_END0
 push constant 9
 call String.new 1
 push constant 80
@@ -323,7 +328,9 @@ call Output.printString 1
 pop temp 0
 push local 2
 call Player.getScore 1
-call Output.prinInt 1
+pop local 9
+push local 9
+call Output.printInt 1
 pop temp 0
 call Output.println 0
 pop temp 0
@@ -357,7 +364,7 @@ call Output.printString 1
 pop temp 0
 push local 1
 call Player.getScore 1
-call Output.prinInt 1
+call Output.printInt 1
 pop temp 0
 call Output.println 0
 pop temp 0
@@ -392,7 +399,7 @@ call String.appendChar 2
 call Output.printString 1
 pop temp 0
 push local 8
-call Output.prinInt 1
+call Output.printInt 1
 pop temp 0
 call Output.println 0
 pop temp 0
@@ -430,7 +437,7 @@ call Output.printString 1
 pop temp 0
 push local 1
 call Player.getMoney 1
-call Output.prinInt 1
+call Output.printInt 1
 pop temp 0
 call Output.println 0
 pop temp 0
@@ -472,7 +479,7 @@ call String.appendChar 2
 call Output.printString 1
 pop temp 0
 push local 8
-call Output.prinInt 1
+call Output.printInt 1
 pop temp 0
 call Output.println 0
 pop temp 0
@@ -510,7 +517,7 @@ call Output.printString 1
 pop temp 0
 push local 1
 call Player.getMoney 1
-call Output.prinInt 1
+call Output.printInt 1
 pop temp 0
 call Output.println 0
 pop temp 0
@@ -519,5 +526,30 @@ push local 7
 call Player.addMoney 2
 pop temp 0
 label IF_FALSE1
+push local 2
+call Player.getScore 1
+push local 1
+call Player.getScore 1
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 4
+call String.new 1
+push constant 84
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Output.println 0
+pop temp 0
+label IF_FALSE2
+goto WHILE_EXP0
+label WHILE_END0
 push constant 0
 return

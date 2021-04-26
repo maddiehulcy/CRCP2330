@@ -26,6 +26,8 @@ function void main() {
 	do Output.printString("Welcome to Liar's Dice");
 	do Output.println();
 
+
+while(~turnEnd) {
 	do Output.printString("P1's Turn");
 	do Output.println();
 
@@ -58,21 +60,22 @@ function void main() {
 	do Output.println();
 
 	do Output.printString("CPU's score: ");
-	do Output.prinInt(p2.getScore());
+	let temp = p2.getScore();
+	do Output.printInt(temp);
 	do Output.println();
 
 	do Output.printString("P1's score: ");
-	do Output.prinInt(p1.getScore());
+	do Output.printInt(p1.getScore());
 	do Output.println();
 
 	if(p1.getScore() > p2.getScore()) {
 		do Output.printString("P1 wins $");
-		do Output.prinInt(p2Bet);
+		do Output.printInt(p2Bet);
 		do Output.println();
 
 		do p1.addMoney(p2Bet);
 		do Output.printString("P1 now has $");
-		do Output.prinInt(p1.getMoney());
+		do Output.printInt(p1.getMoney());
 		do Output.println();
 
 		do p2.subtractMoney(p2Bet);
@@ -80,17 +83,23 @@ function void main() {
 
 	if(p2.getScore() > p1.getScore()) {
 		do Output.printString("CPU wins $");
-		do Output.prinInt(p2Bet);
+		do Output.printInt(p2Bet);
 		do Output.println();
 
 		do p1.subtractMoney(p1Bet);
 		do Output.printString("P1 now has $");
-		do Output.prinInt(p1.getMoney());
+		do Output.printInt(p1.getMoney());
 		do Output.println();
 
 		do p2.addMoney(p1Bet);
 		
 	}
+
+	if(p2.getScore() = p1.getScore()) {
+		do Output.printString("Tie!");
+		do Output.println();
+	}
+}
 
 
 
