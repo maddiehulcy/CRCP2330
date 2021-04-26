@@ -1,54 +1,105 @@
 class Main {
 function void main() {
 	var Random random;
-	var Player p;
-	var Player cpu;
+	var Player p1;
+	var Player p2;
 	var char command;
-	var boolean end;
-	var Array deck;
+	var boolean turnEnd;
 	
-	var int i;
-	var int j;
-	var int k;
-	var int place;
+	var int d1;
+	var int d2;
+	var int p1Bet;
+	var int p2Bet;
 	var int temp;
 	let random = Random.new(100);
 
 	
-	let p = Player.new();
+	let p1 = Player.new();
+
+	let p2 = Player.new();
 
 	
-	let cpu = Player.new();
+	let turnEnd = false;
+	
 
 
-	
-	let end = false;
+	do Output.printString("Welcome to Liar's Dice");
+	do Output.println();
 
-	
-	
-	let deck = Array.new(100);
-	let i = 1;
-	
-	let k = 0;
-	let place = 0;
-	while (k < 4) {
-		while (i < 14) {
-		let deck[place] = i;
-		let i = i + 1;
-		let place = place + 1;
-		do Output.printInt(place);
+	do Output.printString("P1's Turn");
+	do Output.println();
+
+	let d1 = p1.roll();
+	do Output.printString("P1 rolled ");
+	do Output.printInt(d1);
+	do Output.println();
+
+	let d2 = p1.roll();
+	do Output.printString("P1 secretly rolled ");
+	do Output.printInt(d2);
+	do Output.println();
+
+	do Output.printString("CPU's Turn");
+	do Output.println();
+
+	let d1 = p2.roll();
+	do Output.printString("P2 rolled ");
+	do Output.printInt(d1);
+	do Output.println();
+
+	let temp = p2.roll();
+
+	let p1Bet = Keyboard.readInt("P1 Enter Bet: ");
+	do Output.println();
+
+	let p2Bet = p2.getScore() * 10;
+	do Output.printString("CPU Bet: ");
+	do Output.printInt(p2Bet);
+	do Output.println();
+
+	do Output.printString("CPU's score: ");
+	do Output.prinInt(p2.getScore());
+	do Output.println();
+
+	do Output.printString("P1's score: ");
+	do Output.prinInt(p1.getScore());
+	do Output.println();
+
+	if(p1.getScore() > p2.getScore()) {
+		do Output.printString("P1 wins $");
+		do Output.prinInt(p2Bet);
 		do Output.println();
 
-		}
-		let i = 0;
-		let k = k + 1;
+		do p1.addMoney(p2Bet);
+		do Output.printString("P1 now has $");
+		do Output.prinInt(p1.getMoney());
+		do Output.println();
+
+		do p2.subtractMoney(p2Bet);
 	}
 
-	
+	if(p2.getScore() > p1.getScore()) {
+		do Output.printString("CPU wins $");
+		do Output.prinInt(p2Bet);
+		do Output.println();
+
+		do p1.subtractMoney(p1Bet);
+		do Output.printString("P1 now has $");
+		do Output.prinInt(p1.getMoney());
+		do Output.println();
+
+		do p2.addMoney(p1Bet);
+		
+	}
 
 
-	do Output.printString("Welcome to the Game of War");
-	do Output.println();
+
+
+
+
+
+
+
 
 
 	return;
