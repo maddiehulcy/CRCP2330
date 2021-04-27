@@ -64,8 +64,7 @@ while(~turnEnd) {
 	do Output.println();
 
 	do Output.printString("CPU's score: ");
-	let temp = p2.getScore();
-	do Output.printInt(temp);
+	do Output.printInt(p2.getScore());
 	do Output.println();
 
 
@@ -107,6 +106,21 @@ while(~turnEnd) {
 		do Output.printString("Tie!");
 		do Output.println();
 	}
+
+	do Output.println();
+	do Output.printString("Play another round? (y/n)");
+	let command = Keyboard.readChar();
+	
+	if(command = 78) {
+		do Screen.clearScreen();
+		let turnEnd = true;
+	}
+	if(command = 89) {
+		do Screen.clearScreen();
+	}
+
+
+	
 }
 
 
