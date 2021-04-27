@@ -8,10 +8,12 @@ function void main() {
 	
 	var int d1;
 	var int d2;
+	var int d3;
+	var int d4;
 	var int p1Bet;
 	var int p2Bet;
 	var int temp;
-	let random = Random.new(100);
+	let random = Random.new(123);
 
 	
 	let p1 = Player.new();
@@ -37,7 +39,6 @@ while(~turnEnd) {
 	do Output.printInt(d1);
 	do Output.println();
 
-
 	let d2 = p1.roll();
 	do Output.printString("P1 secretly rolled ");
 	do Output.printInt(d2);
@@ -47,12 +48,13 @@ while(~turnEnd) {
 	do Output.println();
 
 	do p2.changeRandom(1);
-	let d1 = p2.roll();
+	let d3 = p2.roll();
 	do Output.printString("P2 rolled ");
 	do Output.printInt(d1);
 	do Output.println();
 
-	let temp = p2.roll();
+	do p2.changeRandom(2);
+	let d4 = p2.roll();
 
 	let p1Bet = Keyboard.readInt("P1 Enter Bet: ");
 	do Output.println();
