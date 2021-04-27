@@ -45,6 +45,7 @@ class Random {
         return ret;
     }
 
+    //get new shift number according to called times
     method int getShift() {
         var int temp;
 
@@ -59,4 +60,18 @@ class Random {
 
         return temp;
     }
+
+    //dispose the Oject
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
     }
+
+    method void addCallTime(int times){
+
+        let calledTime = calledTime + times;
+        return;
+
+    }
+
+}

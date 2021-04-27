@@ -31,10 +31,12 @@ while(~turnEnd) {
 	do Output.printString("P1's Turn");
 	do Output.println();
 
+
 	let d1 = p1.roll();
 	do Output.printString("P1 rolled ");
 	do Output.printInt(d1);
 	do Output.println();
+
 
 	let d2 = p1.roll();
 	do Output.printString("P1 secretly rolled ");
@@ -44,6 +46,7 @@ while(~turnEnd) {
 	do Output.printString("CPU's Turn");
 	do Output.println();
 
+	do p2.changeRandom(1);
 	let d1 = p2.roll();
 	do Output.printString("P2 rolled ");
 	do Output.printInt(d1);
@@ -54,9 +57,10 @@ while(~turnEnd) {
 	let p1Bet = Keyboard.readInt("P1 Enter Bet: ");
 	do Output.println();
 
-	let p2Bet = p2.getScore() * 10;
+	let p2Bet = temp * 10 + 20;
 	do Output.printString("CPU Bet: ");
 	do Output.printInt(p2Bet);
+	do Output.println();
 	do Output.println();
 
 	do Output.printString("CPU's score: ");
@@ -64,8 +68,10 @@ while(~turnEnd) {
 	do Output.printInt(temp);
 	do Output.println();
 
+
 	do Output.printString("P1's score: ");
 	do Output.printInt(p1.getScore());
+	do Output.println();
 	do Output.println();
 
 	if(p1.getScore() > p2.getScore()) {
@@ -76,6 +82,7 @@ while(~turnEnd) {
 		do p1.addMoney(p2Bet);
 		do Output.printString("P1 now has $");
 		do Output.printInt(p1.getMoney());
+		do Output.println();
 		do Output.println();
 
 		do p2.subtractMoney(p2Bet);
@@ -89,6 +96,7 @@ while(~turnEnd) {
 		do p1.subtractMoney(p1Bet);
 		do Output.printString("P1 now has $");
 		do Output.printInt(p1.getMoney());
+		do Output.println();
 		do Output.println();
 
 		do p2.addMoney(p1Bet);

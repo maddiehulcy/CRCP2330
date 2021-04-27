@@ -23,7 +23,7 @@ class Player {
 	}
 
 	method void addMoney(int change) {
-		let score = score + change;
+		let money = money + change;
 		return;
 	}
 
@@ -34,6 +34,12 @@ class Player {
 
 	method int getMoney(){
 		return money;
+	}
+
+	method void changeRandom(int c){
+
+		do random.addCallTime(c);
+		return;
 	}
 
 }
