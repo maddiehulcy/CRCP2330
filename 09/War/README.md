@@ -1,0 +1,3 @@
+Liar's Dice Game
+
+You will be playing a betting game against the computer. You roll two dice. One is seen by all, and one is hidden. Then, the computer rolls two dice, also of which you can only see one. Based on the dice values that you know, bet an amount of money. If you have the higher combined value, you win the CPU's bet. If you have the lower combined value, you lose your bet. Play as many rounds as you want.
