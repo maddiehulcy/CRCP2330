@@ -28,7 +28,7 @@ class Player {
 	}
 
 	method void subtractMoney(int change) {
-		let score = score - change;
+		let money = money - change;
 		return;
 	}
 
@@ -39,6 +39,12 @@ class Player {
 	method void changeRandom(int c){
 
 		do random.addCallTime(c);
+		return;
+	}
+
+	method void clearScore(){
+
+		let score = 0;
 		return;
 	}
 

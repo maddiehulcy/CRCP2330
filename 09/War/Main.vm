@@ -638,6 +638,12 @@ goto IF_FALSE4
 label IF_TRUE4
 call Screen.clearScreen 0
 pop temp 0
+push local 1
+call Player.clearScore 1
+pop temp 0
+push local 2
+call Player.clearScore 1
+pop temp 0
 label IF_FALSE4
 goto WHILE_EXP0
 label WHILE_END0

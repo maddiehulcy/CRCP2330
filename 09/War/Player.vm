@@ -43,10 +43,10 @@ return
 function Player.subtractMoney 0
 push argument 0
 pop pointer 0
-push this 0
+push this 1
 push argument 1
 sub
-pop this 0
+pop this 1
 push constant 0
 return
 function Player.getMoney 0
@@ -61,5 +61,12 @@ push this 2
 push argument 1
 call Random.addCallTime 2
 pop temp 0
+push constant 0
+return
+function Player.clearScore 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 0
 push constant 0
 return

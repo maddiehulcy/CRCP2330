@@ -113,10 +113,13 @@ while(~turnEnd) {
 	
 	if(command = 78) {
 		do Screen.clearScreen();
+
 		let turnEnd = true;
 	}
 	if(command = 89) {
 		do Screen.clearScreen();
+		do p1.clearScore();
+		do p2.clearScore();
 	}
 
 
