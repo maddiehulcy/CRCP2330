@@ -91,7 +91,7 @@ string aInstruction(int n)
 {
     string binaryStr;
 
-    string binary = std::bitset<15>(n).to_string(); //to binary
+    string binary = std::bitset<16>(n).to_string(); //to binary
     //cout <<binary << endl;
 
 
@@ -106,8 +106,22 @@ string cInstruction(string line, map<string, string> &comp, map<string, string> 
     int pos2 = line.find(';');
     string a = line.substr(pos+ 1, pos2);
     a = comp[a];
-    cout << a;
     final.append(a);
+    string c = line.substr(0, pos);
+    c = dest[c];
+    final.append(c);
+    if(pos2 == -1) {
+        final.append("000");
+    }
+    else {
+        string j = line.substr(pos2 + 1, line.length());
+        j = jump[j];
+        final.append(j);
+    }
+
+
+    //cout << final << endl;
+    return final;
 
 }
 
