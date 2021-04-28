@@ -10,6 +10,7 @@ using namespace std;
 
 string parseLine(string line, map<string, string> &comp, map<string, string> &dest, map<string, string> &jump, map<string, int> &standard);
 string aInstruction(int n);
+string cInstruction(string line, map<string, string> &comp, map<string, string> &dest, map<string, string> &jump);
 string convertToBinary(int n);
 void reverseString(char *string, int start, int end);
 string handleC(char* line);
@@ -78,29 +79,16 @@ string parseLine(string line, map<string, string> &comp, map<string, string> &de
 
         }
     } else {
-        //binary = cInstruction(line,comp, dest, jump);
+        binary = cInstruction(line, comp, dest, jump);
     }
     cout << binary << endl;
     return binary;
 }
 
 
-/* Function to reverse string from start to end*/
-void reverseString(string str, int start, int end)
-{
-    while (start < end)
-    {
-        char temp = str[start];
-        str[start] = str[end];
-        str[end] = temp;
-        start++;
-        end--;
-    }
-}
 
 string aInstruction(int n)
 {
-    // array to store binary number
     string binaryStr;
 
     string binary = std::bitset<15>(n).to_string(); //to binary
@@ -109,6 +97,18 @@ string aInstruction(int n)
 
 
     return binary;
+}
+
+string cInstruction(string line, map<string, string> &comp, map<string, string> &dest, map<string, string> &jump) {
+    string final;
+    final.append("111");
+    int pos = line.find('=');
+    int pos2 = line.find(';');
+    string a = line.substr(pos+ 1, pos2);
+    a = comp[a];
+    cout << a;
+    final.append(a);
+
 }
 
 
