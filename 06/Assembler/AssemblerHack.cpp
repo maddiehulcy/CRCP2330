@@ -3,70 +3,82 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
-
+#include <fstream>
+#include <map>
 using namespace std;
 
-string parseLine(char *line);
+string parseLine(string line, map<string, string> &comp, map<string, string> &dest, map<string, string> &jump, map<string, int> &standard) {
+
 string convertToBinary(int n);
 void reverseString(char *string, int start, int end);
 string handleC(char* line);
+void makeMaps(map<string, string> &comp, map<string, string> &dest, map<string, string> &jump,
+              map<string, int> &standard);
 
 
-int main() {
-    ifstream *input_file_pointer;
-    ofstream *output_file_pointer;
-    string line = "";
-    string binary_string = "";
-    size_t len = 0;
-    ssize_t read = 0;
-    ssize_t next_read = 0;
-
-    input_file_pointer.open("C:/Users/maddi/Documents/CRCP2330/nand2tetris/projects/06/add/Add.asm");
-    output_file_pointer.open("C:/Users/maddi/Documents/CRCP2330/nand2tetris/projects/06/add/Add.hack");
-
-    getline(line, input_file_pointer);
-    while (next_read != -1) {
-        binary_string = parseLine(line);
-        next_read = getline(&line, &len, input_file_pointer);
-
-        if (binary_string.length() == 0) { continue; }
-
-        if (next_read != -1) { strcat(binary_string, "\n"); }
-
-        fputs(binary_string, output_file_pointer);
+int main(int argc, char** argv) {
+    map<string, string> comp;
+    map<string, string> dest;
+    map<string, string> jump;
+    map<string, int> standard;
+    makeMaps(comp, dest, jump, standard);
+    string inFileName = argv[1];
+    int nameP1 = inFileName.find_last_of('/') + 1;
+    int nameP2 = inFileName.length() - nameP1 - 4;
+    string outFileName = inFileName.substr(nameP1, nameP2);
+    ifstream input;
+    input.open(argv[1]);
+    string fileLine;
+    while(getline(input, fileLine)){
+        string binaryLine = parseLine(fileLine, comp, dest, jump, standard);
     }
-    fclose(input_file_pointer);
+    return 0;
 
 
     return 0;
 }
 
-string parseLine(string line) {
-    /* each output is no more than 16 bits */
-    char *res = (char*)malloc(18);
-    memset(res, '\0', 18);
-
-    char *binary;
-
-    // ignore whitespaces and comments
-    if (line[0] == '/' || line.length() == 2) {
-        //printf("not to process\n");
+string parseLine(string line, map<string, string> &comp, map<string, string> &dest, map<string, string> &jump, map<string, int> &standard) {
+    string binary;
+    if(line[0] == '/' || line.length() <= 2){
+        return "";
     }
-
-    // if A command
+    //Normalize lines
+    line = line.substr(0, line.length() - 1);
+    if(line[0] == ' '){
+        int i = 0;
+        while(line[i] == ' '){
+            ++i;
+        }
+        line = line.substr(i, line.length());
+    }
+    int commCheck;
+    for(int i = 0; i < line.length(); ++i){
+        if(line[i] == ' '){
+            commCheck = i;
+            break;
+        }
+    }
+    line = line.substr(0, commCheck);
+    //A instruction
     if (line[0] == '@') {
-        binary = convertToBinary(atoi(line + 1));
-        cout << binary << endl;
-        strcpy(res, binary);
-        free(binary);
+        string passStr;
+        for(int i = 1; i < line.length(); ++i){
+            if(isnumber(line[i])){
+                passStr += line[i];
+            }
+        }
+        if(passStr.length() == 0){
+            string checkMap = line.substr(1, line.length() - 1);
+            binary = aInstruction(standard[checkMap]);
+        } else{
+            binary = aInstruction(stoi(passStr));
+        }
+    } else {
+        binary = cInstruction(line,comp, dest, jump);
     }
-    // else C command
-    else {
-
-
-    }
-
-    return res;
+    cout << binary << endl;
+    return binary;
 }
 
 
