@@ -107,9 +107,15 @@ string cInstruction(string line, map<string, string> &comp, map<string, string> 
     string a = line.substr(pos+ 1, pos2);
     a = comp[a];
     final.append(a);
-    string c = line.substr(0, pos);
-    c = dest[c];
-    final.append(c);
+    if(pos == -1) {
+        final.append("000");
+    }
+    else {
+        string c = line.substr(0, pos);
+        c = dest[c];
+        final.append(c);
+    }
+
     if(pos2 == -1) {
         final.append("000");
     }
