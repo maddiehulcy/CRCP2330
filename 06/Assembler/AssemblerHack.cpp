@@ -5,10 +5,11 @@
 #include <string>
 #include <fstream>
 #include <map>
+#include <bitset>
 using namespace std;
 
-string parseLine(string line, map<string, string> &comp, map<string, string> &dest, map<string, string> &jump, map<string, int> &standard) {
-
+string parseLine(string line, map<string, string> &comp, map<string, string> &dest, map<string, string> &jump, map<string, int> &standard);
+string aInstruction(int n);
 string convertToBinary(int n);
 void reverseString(char *string, int start, int end);
 string handleC(char* line);
@@ -64,18 +65,20 @@ string parseLine(string line, map<string, string> &comp, map<string, string> &de
     if (line[0] == '@') {
         string passStr;
         for(int i = 1; i < line.length(); ++i){
-            if(isnumber(line[i])){
+            if(isdigit(line[i])){
                 passStr += line[i];
             }
         }
         if(passStr.length() == 0){
             string checkMap = line.substr(1, line.length() - 1);
             binary = aInstruction(standard[checkMap]);
+
         } else{
             binary = aInstruction(stoi(passStr));
+
         }
     } else {
-        binary = cInstruction(line,comp, dest, jump);
+        //binary = cInstruction(line,comp, dest, jump);
     }
     cout << binary << endl;
     return binary;
@@ -95,33 +98,17 @@ void reverseString(string str, int start, int end)
     }
 }
 
-string convertToBinary(int n)
+string aInstruction(int n)
 {
     // array to store binary number
     string binaryStr;
 
+    string binary = std::bitset<15>(n).to_string(); //to binary
+    //cout <<binary << endl;
 
-    // counter for binary array
-    int i = 0;
-    while (n > 0) {
 
-        // storing remainder in binary array
-        binaryStr[i] = (n % 2) + 48;
-        n = n / 2;
-        i++;
-    }
 
-    binaryStr[i] = '\0';
-
-    /* pad with zeros */
-    char *z = "0";
-    while (binaryStr.length() < 15) {
-        binaryStr.append(z);
-    }
-
-    reverseString(binaryStr, 0, 14);
-
-    return binaryStr;
+    return binary;
 }
 
 
