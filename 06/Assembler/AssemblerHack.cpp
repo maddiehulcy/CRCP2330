@@ -125,8 +125,7 @@ string cInstruction(string line, map<string, string> &comp, map<string, string> 
         final.append(j);
     }
 
-
-    //cout << final << endl;
+    
     return final;
 
 }
