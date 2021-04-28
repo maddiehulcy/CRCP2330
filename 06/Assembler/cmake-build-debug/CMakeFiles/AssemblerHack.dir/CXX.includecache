@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/maddi/Documents/CRCP2330/nand2tetris/projects/06/Assembler/AssemblerHack.cpp
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+iostream
+-
+

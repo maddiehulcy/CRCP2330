@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/AssemblerHack.dir/AssemblerHack.cpp.o  -o AssemblerHack.exe -Wl,--out-implib,libAssemblerHack.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
